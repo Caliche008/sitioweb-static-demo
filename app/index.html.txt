@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mi Taller Terraform</title>
+</head>
+<body>
+    <h1>¡Hola! Soy Caliche y mi despliegue funcionó</h1>
+</body>
+</html>
