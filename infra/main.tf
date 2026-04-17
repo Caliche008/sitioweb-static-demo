@@ -48,14 +48,11 @@ resource "aws_s3_bucket_policy" "public_read" {
   })
 }
 
-# Subimos tu archivo index.html
 resource "aws_s3_object" "index" {
   bucket       = aws_s3_bucket.web.id
   key          = "index.html"
-  source       = "${path.root}/../app/index.html" # Ruta mejorada
+  source       = "../app/index.html"
   content_type = "text/html"
-}
-
-output "website_url" {
-  value = "http://${aws_s3_bucket.web.bucket}.s3-website-us-east-1.amazonaws.com"
+  # ESTA LINEA ES NUEVA: Fuerza la actualización si el contenido cambia
+  etag         = filemd5("../app/index.html") 
 }
