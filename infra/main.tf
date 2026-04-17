@@ -6,7 +6,7 @@ provider "aws" {
 terraform {
 
     backend "s3" {
-    bucket         = "bucket-johansuesucnstate-terraform" # Debes crearlo manualmente una vez
+    bucket = "caliche-remotestate-pro"
     key            = "caliche-proyecto/terraform.tfstate" # Ruta dentro del bucket
     region         = "us-east-1"
     encrypt        = true
@@ -58,3 +58,10 @@ output "bucket_name" {
 output "website_url" {
   value = "http://${aws_s3_bucket.web.bucket}.s3-website-us-east-1.amazonaws.com"
 }
+resource "aws_s3_object" "index" {
+  bucket       = aws_s3_bucket.web.id
+  key          = "index.html"
+  source       = "../app/index.html" # Asegúrate de que la carpeta 'app' esté creada
+  content_type = "text/html"
+}
+# Intento final de despliegue
