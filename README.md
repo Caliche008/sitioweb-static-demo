@@ -1,1 +1,34 @@
 # TestDespliegue - Mi Lab BeTek
+
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Johan CI/CD</title>
+
+<link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🚀 Hola desde AWS + GitHub Actions + Carlos Ortiz</h1>
+
+<p>Despliegue automático funcionando</p>
+
+<div class="version">Versión 2</div>
+
+</div>
+
+</body>
+
+</html>
+
