@@ -1,9 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Mi Taller Terraform</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Despliegue Exitoso - Caliche</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            color: white;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+        h1 { margin: 0; font-size: 2.5rem; color: #00d4ff; }
+        p { font-size: 1.2rem; opacity: 0.9; }
+        .status {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #00ff88;
+            color: #1e3c72;
+            font-weight: bold;
+            border-radius: 50px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+    </style>
 </head>
 <body>
-    <h1>¡Hola! Soy Caliche y mi despliegue funcionó</h1>
+    <div class="card">
+        <h1>¡Despliegue Exitoso!</h1>
+        <p>Hola Profe, este es el proyecto de <strong>Caliche</strong></p>
+        <p>Infraestructura como Código (IaC) funcionando en AWS S3.</p>
+        <div class="status">● Sistema Online</div>
+    </div>
 </body>
 </html>
