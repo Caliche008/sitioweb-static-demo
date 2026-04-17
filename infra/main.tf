@@ -12,17 +12,17 @@ terraform {
 }
 
 resource "aws_s3_bucket" "web" {
-  bucket = "caliche-web-static-2026-pro" # Le puse "pro" al final para que sea unico
+  bucket = "caliche-web-static-2026-pro"
 }
 
 resource "aws_s3_bucket_website_configuration" "web_config" {
   bucket = aws_s3_bucket.web.id
-
   index_document {
     suffix = "index.html"
   }
 }
 
+# Desbloqueamos el acceso público
 resource "aws_s3_bucket_public_access_block" "web_public" {
   bucket = aws_s3_bucket.web.id
 
@@ -32,9 +32,11 @@ resource "aws_s3_bucket_public_access_block" "web_public" {
   restrict_public_buckets = false
 }
 
+# La política ahora espera a que el bloqueo se quite (Esto quita el error 403)
 resource "aws_s3_bucket_policy" "public_read" {
+  depends_on = [aws_s3_bucket_public_access_block.web_public]
+  
   bucket = aws_s3_bucket.web.id
-
   policy = jsonencode({
     Version = "2012-10-17",
     Statement = [{
@@ -46,10 +48,11 @@ resource "aws_s3_bucket_policy" "public_read" {
   })
 }
 
+# Subimos tu archivo index.html
 resource "aws_s3_object" "index" {
   bucket       = aws_s3_bucket.web.id
   key          = "index.html"
-  source       = "../app/index.html"
+  source       = "${path.root}/../app/index.html" # Ruta mejorada
   content_type = "text/html"
 }
 
