@@ -1,3 +1,4 @@
+
 provider "aws" {
   region = "us-east-1"
 }
@@ -6,7 +7,7 @@ terraform {
 
     backend "s3" {
     bucket         = "bucket-johansuesucnstate-terraform" # Debes crearlo manualmente una vez
-    key            = "github-actions-demo/terraform.tfstate" # Ruta dentro del bucket
+    key            = "caliche-proyecto/terraform.tfstate" # Ruta dentro del bucket
     region         = "us-east-1"
     encrypt        = true
   }
@@ -15,7 +16,7 @@ terraform {
 
 
 resource "aws_s3_bucket" "web" {
-  bucket = "johansuescun-githubaccions-demo"
+  bucket = "caliche-web-static-2026"
 }
 
 
@@ -45,7 +46,7 @@ resource "aws_s3_bucket_policy" "public_read" {
       Effect = "Allow",
       Principal = "*",
       Action = "s3:GetObject",
-      Resource = "arn:aws:s3:::johansuescun-githubaccions-demo/*"
+      Resource = "arn:aws:s3:::caliche-web-static-2026/*"
     }]
   })
 }
